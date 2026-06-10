@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ComeUnite – Audits</title>
+</head>
+<body>
+<h1>Audits de ComeUnite</h1>
+
+
+<section>
+    <h2>Validité du code HTML</h2>
+
+    <article>
+        <h3>HeadingsMap</h3>
+        <figure>
+            <img src="/src/headings-map.png" alt="Capture d’écran du HeadingsMap de la frontpage">
+            <img src="/src/headings-map-html5.png" alt="Capture d’écran du HeadingsMap de la frontpage">
+            <figcaption>À l’exception de la navigation, qui d’après Vilain, peut se justifier d’être au-delà du h1, les
+                règles de heading et de balises sectionnantes en HTML5 sont respectées.
+            </figcaption>
+        </figure>
+    </article>
+
+    <article>
+        <h3>Validation du code HTML</h3>
+        <figure>
+            <img src="/src/w3c-validator-frontpage.png" alt="Capture d'écran de la validation du code HTML de la frontpage">
+            <figcaption>Aucune erreur ni aucun avertissement pour la frontpage.</figcaption>
+        </figure>
+        <figure>
+            <img src="/src/w3c-validator-dashboard.png" alt="Capture d'écran de la validation du code HTML de la frontpage">
+            <figcaption>L’application étant en React, certaines erreurs ne peuvent pas vraiment être gérées sans casser le code. Cependant, en dehors des erreurs React, il ne reste pas grand chose.</figcaption>
+        </figure>
+    </article>
+</section>
+
+
+<section>
+    <h2>Dégradation gracieuse</h2>
+
+    <figure>
+        <img src="/">
+        <figcaption>La frontpage de ComeUnite fonctionne entièrement sans JS. Cependant, l'application étant gérée en
+            React, elle ne fonctionne aucunement sans ce dernier. Absolument rien ne fonctionne sans JS. C'était un
+            choix fait en connaissances de cause.
+        </figcaption>
+    </figure>
+</section>
+</body>
+</html>
