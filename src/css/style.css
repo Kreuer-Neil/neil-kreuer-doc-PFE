@@ -1,0 +1,67 @@
+:root {
+    --color-primary: oklch(0.8861 0.043 132.23);
+}
+
+body {
+    padding: 0 0.75rem;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, figcaption {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5em;
+}
+
+h1 {
+    font-size: 2rem;
+
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 0.75rem;
+    /*border: 0.0625rem black solid;*/
+}
+
+figure {
+    background: var(--color-primary);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 3rem 3rem 1rem;
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+}
+
+
+pre:has(code) {
+    padding: 1rem 0.5rem;
+    background: #ddd;
+    border-radius: .5rem;
+    overflow-x: scroll;
+}
+
+code {
+    font-family: monospace, mono;
+    font-size: 0.75rem;
+}

@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>ComeUnite – Audits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
 <body>
 <h1>Audits de ComeUnite</h1>
@@ -25,13 +32,19 @@
     <article>
         <h3>Validation du code HTML</h3>
         <figure>
-            <img src="/src/w3c-validator-frontpage.png" alt="Capture d'écran de la validation du code HTML de la frontpage">
+            <img src="/src/w3c-validator-frontpage.png"
+                 alt="Capture d'écran de la validation du code HTML de la frontpage">
             <figcaption>Aucune erreur ni aucun avertissement pour la frontpage.</figcaption>
         </figure>
         <figure>
-            <img src="/src/w3c-validator-dashboard.png" alt="Capture d'écran de la validation du code HTML du dashboard">
-            <img src="/src/w3c-validator-project.png" alt="Capture d'écran de la validation du code HTML de la page de projet">
-            <figcaption>L’application étant en React, certaines erreurs ne peuvent pas vraiment être gérées sans casser le code. Cependant, en dehors des erreurs React, il ne reste pas grand chose.</figcaption>
+            <img src="/src/w3c-validator-dashboard.png"
+                 alt="Capture d'écran de la validation du code HTML du dashboard">
+            <img src="/src/w3c-validator-project.png"
+                 alt="Capture d'écran de la validation du code HTML de la page de projet">
+            <figcaption>L’application étant en React, certaines erreurs ne peuvent pas vraiment être gérées sans casser
+                le code. Cependant, en dehors des erreurs React, il ne reste pas grand-chose.
+            </figcaption>
+        </figure>
     </article>
 
     <article>
@@ -39,10 +52,11 @@
 
         <figure>
             <img src="/src/srcset-html.png" alt="Capture d’écran d’un srcset">
-            <figcaption>Des srcset ont bien été ajoutés au document. J'ai même créé une fonction les gérant automatiquement.</figcaption>
+            <figcaption>Des srcset ont bien été ajoutés au document. J'ai même créé une fonction les gérant
+                automatiquement (voir ci-dessous).
+            </figcaption>
         </figure>
-        <pre>
-export default function ProjectIcon({project, size = 'small', className = ''}: projectIconProps) {
+        <pre><code>export default function ProjectIcon({project, size = 'small', className = ''}: projectIconProps) {
     const {t} = useTranslation('projects');
 
     let sizeStyle = 'size-8';
@@ -67,8 +81,7 @@ export default function ProjectIcon({project, size = 'small', className = ''}: p
     return &lt;img src={useImageAsset(`projects/${project.icon}/${size}`)} alt={t('icon_alt', {project: project.name})}
                 className={cn("rounded-full bg-loading", sizeStyle, className)}
     srcSet={srcset}/&gt;;
-}
-        </pre>
+}</code></pre>
     </article>
 </section>
 
@@ -77,7 +90,7 @@ export default function ProjectIcon({project, size = 'small', className = ''}: p
     <h2>Dégradation gracieuse</h2>
 
     <figure>
-        <img src="/">
+        <img src="/src/white-page.png" alt="Le syndrôme de la page blanche qui aurait la main verte.">
         <figcaption>La frontpage de ComeUnite fonctionne entièrement sans JS. Cependant, l'application étant gérée en
             React, elle ne fonctionne aucunement sans ce dernier. Absolument rien ne fonctionne sans JS. C'était un
             choix fait en connaissances de cause.
