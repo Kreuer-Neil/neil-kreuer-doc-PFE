@@ -17,7 +17,6 @@ p, figcaption {
 
 h1 {
     font-size: 2rem;
-
     font-weight: 600;
 }
 
@@ -49,7 +48,7 @@ figure {
 }
 
 figcaption {
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     padding: 0 0.5rem;
 }
 
@@ -64,4 +63,9 @@ pre:has(code) {
 code {
     font-family: monospace, mono;
     font-size: 0.75rem;
+}
+
+li {
+    display: block;
+    padding-left: 1rem;
 }

@@ -14,36 +14,35 @@
 <body>
 <h1>Audits de ComeUnite</h1>
 
-
 <section>
     <h2>Validité du code HTML</h2>
 
     <article>
         <h3>HeadingsMap</h3>
         <figure>
-            <img src="/src/headings-map.png" alt="Capture d’écran du HeadingsMap de la frontpage">
-            <img src="/src/headings-map-html5.png" alt="Capture d’écran du HeadingsMap de la frontpage">
             <figcaption>À l’exception de la navigation, qui d’après Vilain, peut se justifier d’être au-delà du h1, les
                 règles de heading et de balises sectionnantes en HTML5 sont respectées.
             </figcaption>
+            <img src="/src/headings-map.png" alt="Capture d’écran du HeadingsMap de la landing page">
+            <img src="/src/headings-map-html5.png" alt="Capture d’écran du HeadingsMap de la landing page">
         </figure>
     </article>
 
     <article>
         <h3>Validation du code HTML</h3>
         <figure>
-            <img src="/src/w3c-validator-frontpage.png"
-                 alt="Capture d'écran de la validation du code HTML de la frontpage">
-            <figcaption>Aucune erreur ni aucun avertissement pour la frontpage.</figcaption>
+            <figcaption>Aucune erreur ni aucun avertissement pour la landing page.</figcaption>
+            <img src="/src/w3c-validator-landing page.png"
+                 alt="Capture d'écran de la validation du code HTML de la landing page">
         </figure>
         <figure>
+            <figcaption>L’application étant en React, certaines erreurs ne peuvent pas vraiment être gérées sans casser
+                le code. Cependant, en dehors des erreurs React, il ne reste pas grand-chose.
+            </figcaption>
             <img src="/src/w3c-validator-dashboard.png"
                  alt="Capture d'écran de la validation du code HTML du dashboard">
             <img src="/src/w3c-validator-project.png"
                  alt="Capture d'écran de la validation du code HTML de la page de projet">
-            <figcaption>L’application étant en React, certaines erreurs ne peuvent pas vraiment être gérées sans casser
-                le code. Cependant, en dehors des erreurs React, il ne reste pas grand-chose.
-            </figcaption>
         </figure>
     </article>
 
@@ -51,10 +50,10 @@
         <h3>srcset</h3>
 
         <figure>
-            <img src="/src/srcset-html.png" alt="Capture d’écran d’un srcset">
             <figcaption>Des srcset ont bien été ajoutés au document. J'ai même créé une fonction les gérant
                 automatiquement (voir ci-dessous).
             </figcaption>
+            <img src="/src/srcset-html.png" alt="Capture d’écran d’un srcset">
         </figure>
         <pre><code>export default function ProjectIcon({project, size = 'small', className = ''}: projectIconProps) {
     const {t} = useTranslation('projects');
@@ -76,26 +75,81 @@
             break;
     }
 
-
-
     return &lt;img src={useImageAsset(`projects/${project.icon}/${size}`)} alt={t('icon_alt', {project: project.name})}
                 className={cn("rounded-full bg-loading", sizeStyle, className)}
     srcSet={srcset}/&gt;;
 }</code></pre>
     </article>
+
+    <article>
+        <h3>Sémantique HTML</h3>
+        <p>J’ai veillé à faire une sémantique HTML correcte, suivant correctement les règles concernant l’utilisation de
+            balises pertinentes selon le contexte.</p>
+        <ul>
+            <li>
+                <p>
+                    Balise article pour les articles, section lorsque le contenu devrait être sectionné et posséder un
+                    titre, mais ne correspond à aucune autre balise sectionnante, et évidemment un h2, h3, h4, ou le
+                    niveau de heading correspondant.
+                </p>
+            </li>
+            <li>
+                <figure>
+                    <figcaption>
+                        Utilisation des balises &lt;ul&gt; et &lt;li&gt; pour les éléments rendus dans une liste, là où
+                        c'est pertinent, favorisation des balises div comme containers utilisés uniquement pour la
+                        stylisation, et utilisation minime de celles-ci.
+                    </figcaption>
+                    <img src="/src/ul.png" alt="Image de l’utilisation pertinente d’une unordered list">
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <figcaption>
+                        Utilisation de balises telles que &lt;span&gt; pour la stylisation de texte sans importance
+                        sémantique, &lt;time&gt; pour les dates, &lt;p&gt;, pour les textes, etc. afin de respecter la
+                        sémantique de balisage pour les types de contenus.
+                    </figcaption>
+                    <img src="/src/time.png" alt="Utilisation de la balise time">
+                </figure>
+            </li>
+        </ul>
+    </article>
 </section>
 
-
-<section>
-    <h2>Dégradation gracieuse</h2>
-
+<article>
+    <h2>Rapports de performances</h2>
     <figure>
-        <img src="/src/white-page.png" alt="Le syndrôme de la page blanche qui aurait la main verte.">
-        <figcaption>La frontpage de ComeUnite fonctionne entièrement sans JS. Cependant, l'application étant gérée en
-            React, elle ne fonctionne aucunement sans ce dernier. Absolument rien ne fonctionne sans JS. C'était un
-            choix fait en connaissances de cause.
+        <figcaption>
+            La landing page charge correctement, et n’est juste pas très bien référencée (SEO).
+        </figcaption>
+        <img src="/src/lighthouse.png" alt="Rapport lighthouse de la landing page">
+    </figure>
+    <p>
+        Malheureusement, les tests de l’application ne fonctionnent pas, car l’application n’arrive pas à passer le
+        login. Cependant, je sais dors et déjà que les performances ne seront pas très bonnes, sachant que React charge
+        toute la page en javascript, ce qui prend bien plus de temps et demande certaines performances.
+    </p>
+</article>
+
+<article>
+    <h2>Dégradation gracieuse</h2>
+    <figure>
+        <img src="/src/landing-page-nojs.png"
+             alt="Landing page de ComeUnite, avec à côté la cosole affichant que les scripts ont été bloqués.">
+        <figcaption>
+            La landing page de ComeUnite n’utilise pas de JS, c’est pourquoi retirer JavaScript ne l’affecte
+            aucunement.
         </figcaption>
     </figure>
-</section>
+    <figure>
+        <img src="/src/white-page.png" alt="Le syndrôme de la page blanche qui aurait la main verte.">
+        <figcaption>
+            Cependant, l'application étant gérée en React, elle, ne fonctionne pas le moins du monde sans ce
+            dernier. Tout est chargé en JavaScript. C'était un choix fait en connaissances de cause, car je savais que
+            ma base d’utilisateurs se trouve sur mobile, où il est presque impossible d’avoir des utilisateurs sans JS.
+        </figcaption>
+    </figure>
+</article>
 </body>
 </html>
