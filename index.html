@@ -14,7 +14,7 @@
 <body>
 <h1>Audits de ComeUnite</h1>
 
-<section>
+<section id="html">
     <h2>Validité du code HTML</h2>
 
     <article>
@@ -96,7 +96,8 @@
             <li>
                 <figure>
                     <figcaption>
-                        Utilisation des balises &lt;ul&gt; et &lt;li&gt; pour les éléments rendus dans une liste, là où
+                        Utilisation des balises <code>&lt;ul&gt;</code> et <code>&lt;li&gt;</code> pour les éléments
+                        rendus dans une liste, là où
                         c'est pertinent, favorisation des balises div comme containers utilisés uniquement pour la
                         stylisation, et utilisation minime de celles-ci.
                     </figcaption>
@@ -106,8 +107,10 @@
             <li>
                 <figure>
                     <figcaption>
-                        Utilisation de balises telles que &lt;span&gt; pour la stylisation de texte sans importance
-                        sémantique, &lt;time&gt; pour les dates, &lt;p&gt;, pour les textes, etc. afin de respecter la
+                        Utilisation de balises telles que <code>&lt;span&gt;</code> pour la stylisation de texte sans
+                        importance
+                        sémantique, <code>&lt;time&gt;</code> pour les dates, <code>&lt;p&gt;</code>, pour les textes,
+                        etc. afin de respecter la
                         sémantique de balisage pour les types de contenus.
                     </figcaption>
                     <img src="src/time.png" alt="Utilisation de la balise time">
@@ -117,7 +120,19 @@
     </article>
 </section>
 
-<article>
+<article id="contrastes">
+    <h2>Contrôle des contrastes</h2>
+
+    <figure>
+        <figcaption>
+            Bien que tout ne passe pas le triple A (les liens en l’occurence), les différents contrastes utilisés dans
+            l’application sont valides.
+        </figcaption>
+        <img src="src/wcag-contrast-check.png" alt="Tests de contraste WCAG condensés">
+    </figure>
+</article>
+
+<article id="performances">
     <h2>Rapports de performances</h2>
     <figure>
         <figcaption>
@@ -125,12 +140,167 @@
         </figcaption>
         <img src="src/lighthouse.png" alt="Rapport lighthouse de la landing page">
     </figure>
+    <figure>
+        <figcaption>
+            La page de login de l’application charge des scripts lourds, ce qui retarde en plus le chargement du
+            contenu. Le chargement est donc plus lent qu’il ne devrait.
+        </figcaption>
+        <img src="src/lighthouse-login-1.png" alt="Rapport lighthouse du login">
+        <img src="src/lighthouse-login-2.png" alt="Résumé des conseils du rapport lighthouse du login">
+    </figure>
     <p>
         Malheureusement, les tests de l’application ne fonctionnent pas, car l’application n’arrive pas à passer le
         login. Cependant, je sais dors et déjà que les performances ne seront pas très bonnes, sachant que React charge
         toute la page en javascript, ce qui prend bien plus de temps et demande certaines performances.
     </p>
+    <figure>
+        <figcaption>
+            Quelques optimisations restent possible, étant donné que l’utilisateur est chargé plusieurs fois, pour la
+            simple raison qu’il n’y a qu’un utilisateur dans ce projet et donc qu’il est le seul derrière toutes les
+            tâches.
+        </figcaption>
+        <img src="src/debugbar-dashboard.png" alt="Laravel Debugbar sur le Dashboard">
+    </figure>
+    <figure>
+        <figcaption>
+            Sur un projet où les tâches sont gérées par plusieurs utilisateurs, on voit déjà la différence.
+        </figcaption>
+        <img src="src/debugbar-project.png" alt="Laravel Debugbar sur une page de projet">
+    </figure>
+    <figure>
+        <figcaption>
+            Tout est relativement optimisé en termes de requêtes dans la page de recherche de projets.
+        </figcaption>
+        <img src="src/debugbar-projects-index.png" alt="Laravel Debugbar sur la page de recherche de projets">
+    </figure>
 </article>
+
+
+<section id="opqast">
+    <h2>Règles Oopqast</h2>
+
+    <article>
+        <h3>Règle 4&nbsp;: Les dates sont présentées dans des formats explicites</h3>
+
+        <figure>
+            <figcaption>
+                Comme cité plus tôt, les balises <code>&lt;time&gt;</code> référencent des dates, sous un format
+                explicite et lisible pour les lecteurs, s’adaptant à la langue sélectionnée.
+            </figcaption>
+            <img src="src/time.png" alt="Utilisation de la balise time">
+            <img src="src/time-lang.png" alt="Utilisation de la balise time">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 11&nbsp;: Les espaces publics proposent au moins un moyen de signaler les abus.</h3>
+
+        <figure>
+            <figcaption>
+                <p>
+                    Les pages de profils et de projets permettent de signaler des abus, au cas où il y en aurait, via
+                    l’icône de drapeau.<br/>
+                </p>
+                <small>
+                    Cette fonctionnalité est encore en développement et ne permet donc pas réellement de signaler
+                    quoi que ce soit à la modération, étant donné qu’il n’y a pas encore de modérateurs.
+                </small>
+            </figcaption>
+            <img src="src/report-profile.png" alt="Affichage de la page d’un projet">
+            <img src="src/report-project.png" alt="Affichage des interactions avec un profil">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 17&nbsp;: La création de compte est possible sans recours à un système d'identification tiers</h3>
+
+        <figure>
+            <figcaption>
+                Les utilisateurs n’ont besoin que d’une adresse e-mail pour se créer un compte.
+            </figcaption>
+            <img src="src/register.png" alt="Page de création de compte">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 20&nbsp;: Les comptes ou abonnements ouverts en ligne peuvent être fermés par le même moyen.</h3>
+
+        <figure>
+            <figcaption>
+                La suppression du compte et de ses contenus peut se faire via la page de profil, dans les paramètres, de
+                même que la
+                déconnexion. Il sera également possible de mettre fin aux abonnements, lorsque ceux-ci seront mis en
+                place.
+            </figcaption>
+            <img src="src/delete.png" alt="Suppression de compte">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 71&nbsp;: L'étiquette de chaque champ de formulaire indique si la saisie est obligatoire.</h3>
+
+        <figure>
+            <figcaption>
+                Une étoile précise que le champ est requis, et de plus les champs possèdent l’attribut "required".
+            </figcaption>
+            <img src="src/form.png" alt="Formulaire de création de tâche">
+        </figure>
+    </article>
+    <article>
+        <h3>Règle 77&nbsp;: Chaque étiquette de formulaire est visuellement rattachée au champ qu'elle décrit.</h3>
+        <p>cf. image de la règle précédente</p>
+    </article>
+
+    <article>
+        <h3>Règle 99&nbsp;: La page d'accueil expose la nature des contenus et services proposés.</h3>
+
+        <figure>
+            <figcaption>
+                Le contenu parlera mieux de lui-même.
+            </figcaption>
+            <img src="src/frontpage.png" alt="Frontpage du site">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 102&nbsp;: Le titre de chaque page permet d'identifier le site.</h3>
+
+        <figure>
+            <figcaption>
+                Les pages possèdent chacune une balise <code>&lt;title&gt;</code> avec le nom de la page active, défini
+                dynamiquement.
+            </figcaption>
+            <img src="src/title.png" alt="Titre de la frontpage">
+            <img src="src/title-2.png" alt="Titre de la page de dashboard">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 116&nbsp;: Chaque image décorative est dotée d'une alternative textuelle appropriée.</h3>
+
+        <figure>
+            <figcaption>
+                Chaque image possède un attribut alt approprié.
+            </figcaption>
+            <img src="src/alt.png" alt="Titre de la page de dashboard">
+        </figure>
+    </article>
+
+    <article>
+        <h3>Règle 119&nbsp;: Les vignettes et aperçus ne sont pas des images de taille supérieure redimensionnées
+            côté client.</h3>
+
+        <figure>
+            <figcaption>
+                Les images ont été dimensionnées par rapport à la taille souhaitée dans le rendu, et possèdent un attribut srcset afin de permettre aux écrans retina et mobiles d’afficher les images en bonne qualité par rapport au rendu de leur appareil.
+            </figcaption>
+            <img src="src/image-size.png" alt="Titre de la page de dashboard">
+        </figure>
+    </article>
+
+
+</section>
+
 
 <article>
     <h2>Dégradation gracieuse</h2>
